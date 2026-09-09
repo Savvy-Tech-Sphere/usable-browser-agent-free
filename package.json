@@ -1,0 +1,30 @@
+{
+  "name": "usable-browser-agent",
+  "version": "0.7.0",
+  "description": "Usable Browser Agent, free personal/evaluation tier: an MCP server plus browser extension that lets your AI agent drive your real, logged-in browser.",
+  "type": "module",
+  "bin": {
+    "usable-browser-agent": "server/index.js",
+    "uba-install": "bin/uba-install.mjs"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "setup": "node bin/uba-install.mjs",
+    "smoke": "node server/smoke-test.mjs",
+    "test": "node test/claims.mjs && node test/workflow-memory.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "ws": "^8.18.0",
+    "zod": "^3.23.8"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "homepage": "https://savvytechsphere.com/usable-browser-agent",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Savvy-Tech-Sphere/usable-browser-agent-free.git"
+  }
+}

@@ -1,0 +1,5 @@
+node_modules/
+secrets.json
+*.log
+.DS_Store
+web-ext-artifacts/

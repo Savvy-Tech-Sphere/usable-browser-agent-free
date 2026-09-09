@@ -1,0 +1,26 @@
+Usable Browser Agent free tier license (personal use and evaluation)
+
+Copyright (c) 2026 Savvy Tech Sphere, LLC
+
+This free tier build of Usable Browser Agent is licensed, not sold.
+
+What you may do with this build:
+
+- Use it for personal, non-commercial purposes.
+- Use it to evaluate the product before buying the commercial license.
+- Keep copies on machines you own for those purposes.
+
+What requires the commercial license:
+
+- Any commercial use. That includes use in or for a business, use in paid
+  client work, and use inside a commercial product or service.
+- The commercial license is a one-time $39 purchase:
+  https://savvytechsphere.com/usable-browser-agent
+
+Other terms:
+
+- Keep this license file with any copy of this build you keep or share.
+- The software is provided as is, without warranty of any kind.
+- This build talks only to the local agent process on your own machine
+  (127.0.0.1) and does not send your data to Savvy Tech Sphere.
+- Questions: use the contact form at https://savvytechsphere.com/#contact
