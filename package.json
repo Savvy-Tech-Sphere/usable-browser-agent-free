@@ -26,5 +26,24 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Savvy-Tech-Sphere/usable-browser-agent-free.git"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "browser",
+    "browser-automation",
+    "browser-agent",
+    "claude-code",
+    "codex",
+    "firefox",
+    "ai-agent"
+  ],
+  "mcpName": "io.github.savvy-tech-sphere/usable-browser-agent",
+  "bugs": {
+    "url": "https://github.com/Savvy-Tech-Sphere/usable-browser-agent-free/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

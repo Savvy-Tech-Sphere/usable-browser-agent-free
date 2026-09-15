@@ -49,6 +49,13 @@ Needs Node.js 18 or newer and Firefox 142 or newer (macOS first; see
 [docs/INSTALL.md](docs/INSTALL.md)).
 
 ```bash
+npm install -g usable-browser-agent
+uba-install
+```
+
+Or from a checkout of this repository:
+
+```bash
 git clone https://github.com/Savvy-Tech-Sphere/usable-browser-agent-free.git
 cd usable-browser-agent-free
 node bin/uba-install.mjs        # or: npm run setup
