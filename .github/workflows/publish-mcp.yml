@@ -1,0 +1,41 @@
+name: Publish to the MCP registry
+
+# Publishes server.json to registry.modelcontextprotocol.io using GitHub OIDC.
+# The io.github.savvy-tech-sphere namespace is authorized by the org-owned
+# repository's OIDC token, so no user login or stored secret is needed.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check server.json version matches package.json
+        run: |
+          pkg=$(node -p "require('./package.json').version")
+          srv=$(node -p "require('./server.json').version")
+          test "$pkg" = "$srv" || { echo "server.json ($srv) != package.json ($pkg)"; exit 1; }
+
+      - name: Install mcp-publisher
+        run: |
+          curl -sSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+          sudo mv mcp-publisher /usr/local/bin/
+
+      - name: Login (GitHub OIDC)
+        run: mcp-publisher login github-oidc
+
+      - name: Publish
+        run: mcp-publisher publish
+
+      - name: Verify
+        run: |
+          sleep 10
+          curl -sS "https://registry.modelcontextprotocol.io/v0/servers?search=io.github.savvy-tech-sphere/usable-browser-agent" | head -c 2000
