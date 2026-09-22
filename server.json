@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
   "name": "io.github.savvy-tech-sphere/usable-browser-agent",
-  "description": "MCP server + browser extension that lets your AI agent drive your real, logged-in browser (free personal/evaluation tier).",
+  "description": "MCP server and Firefox add-on that let an AI agent drive your real, logged-in browser. Free tier.",
   "repository": {
     "url": "https://github.com/Savvy-Tech-Sphere/usable-browser-agent-free",
     "source": "github"
@@ -14,9 +14,16 @@
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "usable-browser-agent",
       "version": "0.7.0",
-      "transport": { "type": "stdio" },
+      "transport": {
+        "type": "stdio"
+      },
       "environmentVariables": [
-        { "name": "UBA_PORT", "description": "Local WebSocket port the browser extension connects to (default 8876).", "isRequired": false, "format": "number" }
+        {
+          "name": "UBA_PORT",
+          "description": "Local WebSocket port the browser extension connects to (default 8876).",
+          "isRequired": false,
+          "format": "number"
+        }
       ]
     }
   ]
