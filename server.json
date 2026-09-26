@@ -1,19 +1,19 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
-  "name": "io.github.savvy-tech-sphere/usable-browser-agent",
+  "name": "io.github.Savvy-Tech-Sphere/usable-browser-agent",
   "description": "MCP server and Firefox add-on that let an AI agent drive your real, logged-in browser. Free tier.",
   "repository": {
     "url": "https://github.com/Savvy-Tech-Sphere/usable-browser-agent-free",
     "source": "github"
   },
-  "version": "0.7.0",
+  "version": "0.7.1",
   "websiteUrl": "https://savvytechsphere.com/usable-browser-agent",
   "packages": [
     {
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "usable-browser-agent",
-      "version": "0.7.0",
+      "version": "0.7.1",
       "transport": {
         "type": "stdio"
       },
