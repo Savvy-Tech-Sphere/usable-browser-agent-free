@@ -693,6 +693,9 @@ function finalNote(results, artifacts) {
   console.log("  Docs:  docs/INSTALL.md, docs/TROUBLESHOOTING.md, docs/UNINSTALL.md");
   console.log("  Trust: docs/CREDENTIAL-SAFETY.md (how your passwords stay out of the agent)");
   console.log("  Terms: legal/EULA.md (commercial license), legal/PRIVACY.md, legal/REFUND-POLICY.md");
+  console.log("");
+  console.log("  Using it for work? The commercial license is $39 once (no subscription, includes the Chrome build):");
+  console.log("  https://savvytechsphere.com/usable-browser-agent?utm_source=installer&utm_medium=cli&utm_campaign=free-tier   14-day, no-questions refund.");
   if (!results.smoke) {
     console.log("");
     warn("The smoke test did not pass. Resolve that before relying on the agent.");

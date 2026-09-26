@@ -9,8 +9,9 @@ build, licensed for personal, non-commercial use and for evaluating the product 
 The Firefox extension for it is published on Firefox Add-ons. Commercial use (in or for a
 business, in paid client work, or inside a commercial product or service) needs the commercial
 license, a one-time $39 purchase at <https://savvytechsphere.com/usable-browser-agent>, which
-also includes the Chrome build. There is no license key in either tier and nothing checks for
-one; the tiers differ only in the license grant and the extension identity.
+also includes the Chrome build. It comes with a 14-day, no-questions refund. There is no license
+key in either tier and nothing checks for one; the tiers differ only in the license grant and
+the extension identity.
 
 > **Your passwords stay out of the agent.** When the agent logs you in, it passes only a secret
 > *alias*, never the value. Credentials live in a local vault, are domain-locked (refused on the
