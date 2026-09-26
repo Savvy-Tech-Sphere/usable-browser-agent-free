@@ -259,14 +259,14 @@ async function askYesNo(question, def = true) {
 // Only report what is actually on disk, so the final instructions never point
 // at a file this copy does not have.
 // ---------------------------------------------------------------------------
-function findArtifacts() {
+export function findArtifacts(root = ROOT, version = VERSION) {
   const found = { firefoxXpi: null, firefoxUnsignedZip: null, chromeZip: null, chromeDir: null };
-  for (const dir of [ROOT, path.join(ROOT, "web-ext-artifacts")]) {
+  for (const dir of [root, path.join(root, "web-ext-artifacts")]) {
     if (!fs.existsSync(dir)) continue;
     for (const name of fs.readdirSync(dir).sort()) {
       const full = path.join(dir, name);
       if (!fs.statSync(full).isFile()) continue;
-      if (name.endsWith(".xpi") && name.includes(VERSION)) {
+      if (name.endsWith(".xpi") && name.includes(version)) {
         if (!found.firefoxXpi) found.firefoxXpi = full;
       } else if (/^uba-chrome-.*\.zip$/.test(name)) {
         if (!found.chromeZip) found.chromeZip = full;
@@ -275,13 +275,29 @@ function findArtifacts() {
       }
     }
   }
-  for (const dir of [path.join(ROOT, "chrome"), path.join(ROOT, "dist", "chrome")]) {
+  for (const dir of [path.join(root, "chrome"), path.join(root, "dist", "chrome")]) {
     if (fs.existsSync(path.join(dir, "manifest.json"))) {
       found.chromeDir = dir;
       break;
     }
   }
   return found;
+}
+
+// A signed Firefox XPI and the Chrome build ship only in the purchased bundle,
+// so a copy with neither is the free personal/eval tier.
+export function isFreeTierInstall(artifacts) {
+  return !artifacts.firefoxXpi && !artifacts.chromeDir && !artifacts.chromeZip;
+}
+
+// The commercial-license note for the Setup complete block; empty for the paid bundle.
+export function licenseNote(artifacts) {
+  if (!isFreeTierInstall(artifacts)) return [];
+  return [
+    "  Using it for work? The commercial license is $39 once (no subscription, includes the Chrome build):",
+    "  https://savvytechsphere.com/usable-browser-agent?utm_source=installer&utm_medium=cli&utm_campaign=free-tier",
+    "  14-day, no-questions refund.",
+  ];
 }
 
 // ---------------------------------------------------------------------------
@@ -693,6 +709,11 @@ function finalNote(results, artifacts) {
   console.log("  Docs:  docs/INSTALL.md, docs/TROUBLESHOOTING.md, docs/UNINSTALL.md");
   console.log("  Trust: docs/CREDENTIAL-SAFETY.md (how your passwords stay out of the agent)");
   console.log("  Terms: legal/EULA.md (commercial license), legal/PRIVACY.md, legal/REFUND-POLICY.md");
+  const note = licenseNote(artifacts);
+  if (note.length) {
+    console.log("");
+    for (const line of note) console.log(line);
+  }
   if (!results.smoke) {
     console.log("");
     warn("The smoke test did not pass. Resolve that before relying on the agent.");
@@ -722,7 +743,20 @@ async function main() {
   process.exit(smoke ? 0 : 1);
 }
 
-main().catch((e) => {
-  console.error(`\n${red("Installer error:")} ${e?.stack || e}`);
-  process.exit(1);
-});
+// Run only when executed directly (including through the npm bin symlink), so
+// tests can import the artifact helpers without starting the installer.
+function isEntryPoint() {
+  if (!process.argv[1]) return false;
+  try {
+    return fs.realpathSync(process.argv[1]) === fs.realpathSync(fileURLToPath(import.meta.url));
+  } catch {
+    return false;
+  }
+}
+
+if (isEntryPoint()) {
+  main().catch((e) => {
+    console.error(`\n${red("Installer error:")} ${e?.stack || e}`);
+    process.exit(1);
+  });
+}

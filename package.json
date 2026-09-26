@@ -11,7 +11,7 @@
     "start": "node server/index.js",
     "setup": "node bin/uba-install.mjs",
     "smoke": "node server/smoke-test.mjs",
-    "test": "node test/claims.mjs && node test/workflow-memory.mjs"
+    "test": "node test/claims.mjs && node test/workflow-memory.mjs && node test/installer-license-note.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
