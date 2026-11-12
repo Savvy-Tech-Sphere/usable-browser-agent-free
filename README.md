@@ -1,6 +1,8 @@
 # Usable Browser Agent (free personal / evaluation tier)
 
 An MCP server plus a browser extension that lets your AI agent (Claude Code, Codex, or any MCP
+
+[![Usable Browser Agent on StartupScores](https://startupscores.com/badge/usable-browser-agent.svg?style=shield&v=combo&theme=dark)](https://startupscores.com/open-source/usable-browser-agent)
 client) drive **your real browser**, with all your logged-in sessions, instead of a throwaway
 automated browser. You log in once, by hand, and the agent operates as you.
 
